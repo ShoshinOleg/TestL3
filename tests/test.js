@@ -41,6 +41,21 @@ t.test('AVLTree', (t) => {
 
         t.end();
     })
+
+    t.test('getBalance', (t) => {
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(15);
+        tree.insert(13);
+
+        t.same(tree.getBalance(tree.root), -1);
+        t.same(tree.getBalance(tree.root.left), 0);
+
+        t.same(tree.getBalance(tree.root.right), 1);
+        t.same(tree.getBalance(tree.root.right.left), 0);
+
+        t.end();
+    });
     
     t.end();
 });

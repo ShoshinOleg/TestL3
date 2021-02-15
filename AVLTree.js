@@ -24,8 +24,7 @@ class AVLTree {
         }
         if(value < node.value) {
             node.left = this.putNode(node.left, value);
-        } 
-        else if(value > node.value) {
+        } else if(value > node.value) {
             node.right = this.putNode(node.right, value);
         }
         this.correctHeight(node);
@@ -37,6 +36,10 @@ class AVLTree {
         node.height = Math.max(this.getHeight(node.left),
                                 this.getHeight(node.right))
                                  + 1;
+    }
+
+    getBalance(node) {
+        return this.getHeight(node.left) - this.getHeight(node.right);
     }
 
     getHeight(node) {
