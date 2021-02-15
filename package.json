@@ -7,11 +7,11 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "node tests/test.js"
+    "test": "tap tests/test.js"
   },
   "author": "Oleg",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "tap": "^14.11.0"
   }
 }
