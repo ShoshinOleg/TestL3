@@ -172,6 +172,19 @@ t.test('AVLTree', (t) => {
         
         t.end();
     });
+
+    t.test('getMin', (t) => {
+        t.same(tree.getMin(), null, 'Empty tree');
+
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(12);
+        tree.insert(2);
+        t.same(tree.getMin(), 2);
+
+        t.end();
+    });
+
     t.end();
 });
 

@@ -72,7 +72,6 @@ class AVLTree {
         if (this.getBalance(node) == -2){
     
             if (this.getBalance(node.right) > 0){
-                console.log('balance_bigLeftRot');
                 node.right = this.rotateRight(node.right);
             }
     
@@ -81,7 +80,6 @@ class AVLTree {
         else
         if (this.getBalance(node) == 2){
             if (this.getBalance(node.left) < 0){
-                console.log('balance_bigRightRot');
                 node.left = this.rotateLeft(node.left);
             }
     
@@ -89,6 +87,18 @@ class AVLTree {
         }
     
         return node;
+    }
+
+    getMin() {
+        if(!this.root)
+            return null;
+        return this.getMinNode(this.root).value;
+    }
+
+    getMinNode(node) {
+        if (!node.left) 
+            return node;
+        return this.getMinNode(node.left); 
     }
 }
 
