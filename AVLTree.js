@@ -101,6 +101,10 @@ class AVLTree {
         return this.getMinNode(node.left); 
     }
 
+    deleteMin() {
+        this.root = this.deleteMinNode(this.root);
+    }
+
     deleteMinNode(node) {
         if(node.left == null) {
             return node.right;
