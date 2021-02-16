@@ -100,6 +100,19 @@ class AVLTree {
             return node;
         return this.getMinNode(node.left); 
     }
+
+    deleteMinNode(node) {
+        if(node.left == null) {
+            return node.right;
+        }
+
+        node.left = this.deleteMinNode(node.left);
+        this.correctHeight(node);
+        
+        return node;
+    }
+
+    
 }
 
 module.exports = AVLTree;

@@ -185,6 +185,18 @@ t.test('AVLTree', (t) => {
         t.end();
     });
 
+    t.test('delete min', (t) => {
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(15);
+
+        tree.root = tree.deleteMinNode(tree.root);
+        t.same(tree.root.right.left, null);
+        
+        t.end();
+    });
+
     t.end();
 });
 
