@@ -197,7 +197,63 @@ t.test('AVLTree', (t) => {
         t.end();
     });
 
-    
+    t.test('delete', (t) => {
+        tree.insert(2);
+        tree.delete(3);
+        t.same(tree.root.value, 2);
+        tree.delete(2);
+        t.same(tree.root, null);
+        
+
+        tree.insert(30);
+
+        tree.insert(20);
+        tree.insert(40);
+        
+        tree.insert(10);
+        tree.insert(25);
+        tree.insert(35);
+        tree.insert(50);
+
+        tree.insert(15);
+        tree.insert(23);
+        tree.insert(32);
+        tree.insert(37);
+        tree.insert(42);
+        tree.insert(52);
+
+        tree.delete(32);
+        tree.delete(37);
+
+        t.same(tree.root.value, 30);
+        t.same(tree.root.left.value, 20);
+        t.same(tree.root.right.value, 40);
+        t.same(tree.root.right.left.value, 35);
+        t.same(tree.root.right.right.value, 50);
+        t.same(tree.root.right.right.left.value, 42);
+        t.same(tree.root.right.right.right.value, 52);
+        t.same(tree.getBalance(tree.root), 0);
+
+        tree.delete(40);
+        t.same(tree.getBalance(tree.root), 0);
+        t.same(tree.getHeight(tree.root.right), 3);
+        t.same(tree.root.value, 30);
+        t.same(tree.root.left.value, 20);
+        t.same(tree.root.right.value, 42);
+        t.same(tree.root.right.left.value, 35);
+        t.same(tree.root.right.right.value, 50);
+        t.same(tree.root.right.right.left, null);
+        t.same(tree.root.right.right.right.value, 52);
+
+        tree.delete(10);
+        t.same(tree.root.value, 30);
+        t.same(tree.root.left.value, 20);
+        t.same(tree.root.left.left.value, 15);
+        t.same(tree.root.left.right.value, 25);
+        t.same(tree.root.left.right.left.value, 23);
+        
+        t.end();
+    });
 
     t.end();
 });
