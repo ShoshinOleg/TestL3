@@ -15,7 +15,7 @@ class AVLTree {
     }
 
     insert(value) {
-        this.root = this.putNode(this.root, value);
+        this.root = this.balance(this.putNode(this.root, value));
     }
 
     putNode(node, value) {
@@ -65,6 +65,30 @@ class AVLTree {
         this.correctHeight(nodeA);
 
         return nodeA;
+    }
+
+    balance(node) {
+        this.correctHeight(node);
+        if (this.getBalance(node) == -2){
+    
+            if (this.getBalance(node.right) > 0){
+                console.log('balance_bigLeftRot');
+                node.right = this.rotateRight(node.right);
+            }
+    
+            return this.rotateLeft(node);
+        }
+        else
+        if (this.getBalance(node) == 2){
+            if (this.getBalance(node.left) < 0){
+                console.log('balance_bigRightRot');
+                node.left = this.rotateLeft(node.left);
+            }
+    
+            return this.rotateRight(node);
+        }
+    
+        return node;
     }
 }
 

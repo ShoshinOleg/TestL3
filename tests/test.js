@@ -93,6 +93,85 @@ t.test('AVLTree', (t) => {
         t.end();
     });
 
+    t.test('Balance rotate left. B(a)=-2, B(b)=-1.', (t) => {
+        tree.insert(10);
+        tree.insert(7);
+        tree.insert(15);
+        tree.insert(13);
+        tree.insert(17);
+        tree.insert(19);
+
+        //here must be execute left rotation
+        
+        t.same(tree.root.value, 15);
+        t.same(tree.root.right.value, 17);
+        t.same(tree.root.left.value, 10);
+        t.same(tree.root.left.left.value, 7);
+        t.same(tree.root.left.right.value, 13);
+        t.same(tree.root.right.right.value, 19);
+
+        t.end();
+    });
+
+    t.test('Balance rotate right. B(a)=2, B(b)=1', (t) => {
+        tree.insert(40);
+        tree.insert(50);
+        tree.insert(20);
+        tree.insert(30);
+        tree.insert(10);
+        tree.insert(5);
+
+        //here must be execute left rotation
+        
+        t.same(tree.root.value, 20);
+        t.same(tree.root.left.value, 10);
+        t.same(tree.root.left.left.value, 5);
+        t.same(tree.root.right.value, 40);
+        t.same(tree.root.right.left.value, 30);
+        t.same(tree.root.right.right.value, 50);
+        
+        t.end();
+    });
+
+    t.test('Balance. B(a)=-2, B(b)=1. Big left rotation', (t) => {
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(20);
+        tree.insert(15);
+        tree.insert(30);
+        tree.insert(17);
+
+        //here must be execute big left rotation
+    
+        t.same(tree.root.value, 15);
+        t.same(tree.root.left.value, 10);
+        t.same(tree.root.left.left.value, 5);
+        t.same(tree.root.right.value, 20);
+        t.same(tree.root.right.left.value, 17);
+        t.same(tree.root.right.right.value, 30);
+
+        t.end();
+    });
+    
+    t.test('Balance. B(a)=2, B(b)=-1. Big right rotation.', (t) => {
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(10);
+        tree.insert(25);
+        tree.insert(23);
+
+        //here must be execute big right rotation
+
+        t.same(tree.root.value, 25);
+        t.same(tree.root.left.value, 20);
+        t.same(tree.root.right.value, 30);
+        t.same(tree.root.right.right.value, 40);
+        t.same(tree.root.left.left.value, 10);
+        t.same(tree.root.left.right.value, 23);
+        
+        t.end();
+    });
     t.end();
 });
 
