@@ -57,6 +57,42 @@ t.test('AVLTree', (t) => {
         t.end();
     });
     
+    t.test('Rotate left', (t) => {
+        tree.insert(10);
+        tree.insert(7);
+        tree.insert(15);
+        tree.insert(13);
+        tree.insert(17);
+
+        tree.root = tree.rotateLeft(tree.root);
+        
+        t.same(tree.root.value, 15);
+        t.same(tree.root.right.value, 17);
+        t.same(tree.root.left.value, 10);
+        t.same(tree.root.left.left.value, 7);
+        t.same(tree.root.left.right.value, 13);
+
+        t.end();
+    });
+
+    t.test('Rotate right', (t) => {
+        tree.insert(15);
+        tree.insert(10);
+        tree.insert(17);
+        tree.insert(7);
+        tree.insert(13);
+
+        tree.root = tree.rotateRight(tree.root);
+
+        t.same(tree.root.value, 10);
+        t.same(tree.root.left.value, 7);
+        t.same(tree.root.right.value, 15);
+        t.same(tree.root.right.left.value, 13);
+        t.same(tree.root.right.right.value, 17);
+
+        t.end();
+    });
+
     t.end();
 });
 

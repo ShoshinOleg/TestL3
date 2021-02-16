@@ -48,6 +48,24 @@ class AVLTree {
         }
         return node.height;
     }
+
+    rotateLeft(nodeA) {
+        let nodeB = nodeA.right;
+        nodeA.right = nodeB.left;
+        nodeB.left = nodeA;
+        this.correctHeight(nodeB);
+
+        return nodeB;
+    }
+
+    rotateRight(nodeB) {
+        let nodeA = nodeB.left;
+        nodeB.left = nodeA.right;
+        nodeA.right = nodeB;
+        this.correctHeight(nodeA);
+
+        return nodeA;
+    }
 }
 
 module.exports = AVLTree;
